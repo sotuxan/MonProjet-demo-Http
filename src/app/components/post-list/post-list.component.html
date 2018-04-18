@@ -1,0 +1,4 @@
+<h1>Liste des posts</h1>
+<ul *ngFor='let p of data | slice:0:10'>
+  <li>{{p.id}}-{{p.userId}}-{{p.title| slice:0:4}}-{{p.body| slice:0:4}}</li>
+</ul>
