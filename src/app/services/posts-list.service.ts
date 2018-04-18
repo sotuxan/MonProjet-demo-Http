@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+// import { Http, Response } from '@angular/http';
 import { Ipost } from '../domain/ipost';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -8,7 +9,7 @@ import 'rxjs/add/operator/map';
 export class PostsListService {
 
   private URL = 'https://jsonplaceholder.typicode.com/posts';
-  constructor(private _http: Http) { }
+  constructor(private _http: HttpClient) { }
 
   // getAllPosts(): Ipost[] {
   //   return [
@@ -20,8 +21,8 @@ export class PostsListService {
 
   getAllPosts(): Observable<Ipost[]> {
     return this._http.
-        get(this.URL).
-        map((response: Response) => <Ipost[]> response.json());
+        get<Ipost[]>(this.URL);
+      //  map((response: Response) => <Ipost[]> response.json());
    }
 
 }
